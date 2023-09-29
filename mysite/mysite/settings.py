@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/4.2/ref/settings/
 """
 
 from pathlib import Path
+import os
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -125,11 +126,12 @@ STATIC_URL = 'static/'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-MEDIA_ROOT = 'media/'
+MEDIA_ROOT = os.path.join(os.path.expanduser("~"), "media")
 
 MEDIA_URL = '/media/'
 
 STATICFILES_DIRS = [
-    BASE_DIR / "media",
-    "media/",
+    os.path.join(BASE_DIR, "static"),
+    os.path.join(os.path.expanduser("~"), BASE_DIR, "media"),
+    os.path.join(os.path.expanduser("~"), BASE_DIR, "media/"),
 ]
